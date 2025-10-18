@@ -1,0 +1,5 @@
+CREATE TABLE random_numbers (
+    id SERIAL PRIMARY KEY,
+    number INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
