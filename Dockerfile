@@ -1,12 +1,11 @@
-FROM nginx:alpine
+FROM php:8.2-cli-alpine
 
-RUN apk add --no-cache php82 php82-fpm php82-pdo_pgsql supervisor
+RUN apk add --no-cache postgresql-dev && docker-php-ext-install pdo_pgsql
 
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY src/ /var/www/html/
-COPY supervisord.conf /etc/supervisord.conf
+COPY src/ /app
+
+WORKDIR /app
 
 EXPOSE 80
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["php", "-S", "0.0.0.0:80"]
