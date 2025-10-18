@@ -7,7 +7,6 @@
     <h1>LEPP Stack</h1>
 
     <button id="sendNumber">Send Random Number</button>
-    <button id="viewStats">View Stats</button>
 
     <div id="result"></div>
 
@@ -25,10 +24,6 @@
         document.getElementById('sendNumber').onclick = function() {
             const randomNumber = Math.floor(Math.random() * 1000) + 1;
             makeRequest({action: 'insert', number: randomNumber});
-        };
-
-        document.getElementById('viewStats').onclick = function() {
-            makeRequest({action: 'stats'});
         };
     </script>
 </body>
